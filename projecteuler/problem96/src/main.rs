@@ -97,10 +97,10 @@ impl Sudoku {
             return Vec::new();
         }
 
-        let mut try_cell = state.board[cell].clone();
+        let mut possibilities = state.board[cell].possible.clone();
 
         // Try the various possibilities of the cell.
-        for value in try_cell.possible.drain() {
+        for value in possibilities.drain() {
             let mut new_state = state.clone();
             new_state.board[cell].value = value;
             new_state.queue.push_back(cell as u8);
