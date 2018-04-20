@@ -1,0 +1,6 @@
+[package]
+name = "c357-intermediate"
+version = "0.1.0"
+authors = ["Simon Smith <smithsps@gmail.com>"]
+
+[dependencies]
