@@ -192,6 +192,13 @@ impl Sudoku {
         }
         println!("----------");
     }
+
+    fn print_flat(board: &Vec<Cell>) {
+        for i in 0..81 {
+            print!("{}", board[i].value);
+        }
+        print!("\n");
+    }
 }
 
 
@@ -202,8 +209,8 @@ fn process(file: String) {
 
     let mut games = games.split_whitespace();
 
-    let mut game_number = 1;
-    let mut top_three_sum = 0;
+    //let mut game_number = 1;
+    //let mut top_three_sum = 0;
 
     while games.nth(1).is_some() {
         let mut board = [0u8; 81];
@@ -214,23 +221,23 @@ fn process(file: String) {
             }
         }
 
-
-
         let mut sudoku = Sudoku::from(board);
         if sudoku.solve() {
-            println!("Game Number: {}", game_number);
-            game_number += 1;
+            //println!("Game Number: {}", game_number);
+            //game_number += 1;
+            let num_of_solutions = sudoku.solutions.len();
             for s in sudoku.solutions {
-                Sudoku::print(&s);
-                top_three_sum += Sudoku::top_left_number(&s);
+                Sudoku::print_flat(&s);
+                //top_three_sum += Sudoku::top_left_number(&s);
             }
+            println!("Number of solutions: {}", num_of_solutions);
         } else {
             println!("No solutions :(");
             Sudoku::print(&sudoku.board);
             panic!()
         }
     }
-    println!("Top Left Sum : {}", top_three_sum);
+    //println!("Top Left Sum : {}", top_three_sum);
 }
 
 fn main() {
