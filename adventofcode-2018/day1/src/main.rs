@@ -12,7 +12,7 @@ fn main() {
             _ => println!("Only two parts of problem"),
         }
     } else {
-        println!("Format");
+        println!("Command Syntax");
         println!("day1 <problem-part-number>");
     }
 }
